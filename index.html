@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#17110f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mars Academy">
+  <meta name="description" content="A portable Godot learning, practice, and design laboratory for Project Mars.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Mars Combat Academy</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <button class="icon-button" id="menuButton" aria-label="Open menu">☰</button>
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div><strong>Mars Combat Academy</strong><span id="headerSubtitle">Portable training lab</span></div>
+      </div>
+      <button class="icon-button" id="searchButton" aria-label="Search">⌕</button>
+    </header>
+
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div class="brand-mark large">M</div>
+        <div><strong>Mars Combat Academy</strong><span>Learn · Practice · Build</span></div>
+        <button class="icon-button" id="closeDrawer" aria-label="Close menu">×</button>
+      </div>
+      <nav class="drawer-nav">
+        <button data-view="home"><span>⌂</span>Training Deck</button>
+        <button data-view="learn"><span>▤</span>Learn</button>
+        <button data-view="practice"><span>◎</span>Practice</button>
+        <button data-view="build"><span>⌘</span>Build Missions</button>
+        <button data-view="labs"><span>⌁</span>Interactive Labs</button>
+        <button data-view="reference"><span>▦</span>Reference</button>
+        <button data-view="notes"><span>✎</span>Workshop Notes</button>
+        <button data-view="settings"><span>⚙</span>Settings & Backup</button>
+      </nav>
+      <div class="drawer-note">Tracking is intentionally secondary. The app saves lesson bookmarks, completed exercises, notes, and lab designs locally on this device.</div>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <main id="mainContent">
+      <section class="view active" id="view-home"></section>
+      <section class="view" id="view-learn"></section>
+      <section class="view" id="view-practice"></section>
+      <section class="view" id="view-build"></section>
+      <section class="view" id="view-labs"></section>
+      <section class="view" id="view-reference"></section>
+      <section class="view" id="view-notes"></section>
+      <section class="view" id="view-settings"></section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-view="home" class="active"><span>⌂</span>Deck</button>
+      <button data-view="learn"><span>▤</span>Learn</button>
+      <button data-view="practice"><span>◎</span>Practice</button>
+      <button data-view="build"><span>⌘</span>Build</button>
+      <button data-view="labs"><span>⌁</span>Labs</button>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header"><h2 id="modalTitle">Details</h2><button class="icon-button" id="modalClose">×</button></div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="search-panel" id="searchPanel" hidden>
+    <div class="search-head"><input id="globalSearch" type="search" placeholder="Search lessons, terms, missions…"><button class="icon-button" id="closeSearch">×</button></div>
+    <div id="searchResults"></div>
+  </div>
+
+  <input type="file" id="importFile" accept="application/json" hidden>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
